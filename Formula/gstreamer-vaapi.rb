@@ -4,7 +4,7 @@ class GstreamerVaapi < Formula
   url "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.12.3.tar.xz"
   sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
   
-  head "https://github.com/GStreamer/gstreamer-vaapi.git"
+  head "https://github.com/GStreamer/gstreamer-vaapi.git", :tag => "1.12.3"
 
   depends_on "pkg-config" => :build
   depends_on "gstreamer"
