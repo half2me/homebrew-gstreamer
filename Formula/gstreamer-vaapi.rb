@@ -5,7 +5,7 @@ class GstreamerVaapi < Formula
   sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
   
   head do
-    url "https://github.com/GStreamer/gstreamer-vaapi.git"
+    url "https://github.com/GStreamer/gstreamer-vaapi", :using => :git
     
     depends_on "autoconf" => :build
     depends_on "automake" => :build
