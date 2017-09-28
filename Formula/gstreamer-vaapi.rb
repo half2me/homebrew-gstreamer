@@ -12,9 +12,6 @@ class GstreamerVaapi < Formula
   depends_on "linuxbrew/xorg/libva"
   depends_on "linuxbrew/xorg/wayland" => :recommended
   depends_on "linuxbrew/xorg/libdrm" => :recommended
-  depends_on "linuxbrew/xorg/wayland" => :recommended
-  depends_on "linuxbrew/xorg/libx11" => :recommended
-  depends_on "linuxbrew/xorg/wayland" => :recommended
   
   option "with-foo", "Compile with foo bindings"
 
