@@ -24,7 +24,7 @@ class GstreamerVaapi < Formula
       --disable-debug
       --disable-silent-rules
       --disable-examples
-      --with-encoders
+      --enable-encoders
     ]
     
     if build.head?
