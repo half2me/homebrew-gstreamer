@@ -14,15 +14,28 @@ class GstreamerVaapi < Formula
   depends_on "linuxbrew/xorg/libdrm" => :recommended
   depends_on "linuxbrew/xorg/libx11" => :recommended
   
-  option "with-foo", "Compile with foo bindings"
+  def caveats
+  "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
+  end
+  
+  # You must install a libva driver after installing this package
+  # For example, brew install libva-intel-driver
+  
+  option "with-static", "Build static libraries (not recommended)"
 
   def install
     args = %W[
       --prefix=#{prefix}
+      --sysconfdir=#{etc}
+      --localstatedir=#{var}
       --disable-dependency-tracking
       --disable-debug
       --disable-silent-rules
       --disable-examples
+      --enable-static=#{build.with?("static") ? "yes" : "no"}
+      --enable-drm=#{build.with?("libdrm") ? "yes" : "no"}
+      --enable-x11=#{build.with?("x11") ? "yes" : "no"}
+      --enable-wayland=#{build.with?("wayland") ? "yes" : "no"}
     ]
     
     if build.head?
