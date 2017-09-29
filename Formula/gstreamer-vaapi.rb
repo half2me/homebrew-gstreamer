@@ -30,9 +30,6 @@ class GstreamerVaapi < Formula
       --disable-silent-rules
       --disable-examples
       --enable-static=#{build.with?("static") ? "yes" : "no"}
-      --enable-drm=#{build.with?("libdrm") ? "yes" : "no"}
-      --enable-x11=#{build.with?("x11") ? "yes" : "no"}
-      --enable-wayland=#{build.with?("wayland") ? "yes" : "no"}
     ]
     
     if build.head?
