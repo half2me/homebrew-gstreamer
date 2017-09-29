@@ -18,9 +18,6 @@ class GstreamerVaapi < Formula
   "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
   end
   
-  # You must install a libva driver after installing this package
-  # For example, brew install libva-intel-driver
-  
   option "with-static", "Build static libraries (not recommended)"
 
   def install
