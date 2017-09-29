@@ -9,7 +9,7 @@ class GstreamerVaapi < Formula
   depends_on "pkg-config" => :build
   depends_on "gstreamer"
   depends_on "gst-plugins-bad"
-  depends_on "linuxbrew/xorg/libva"
+  depends_on "linuxbrew/xorg/libva" => ["with-eglx"]
   depends_on "linuxbrew/xorg/wayland" => :recommended
   depends_on "linuxbrew/xorg/libdrm" => :recommended
   depends_on "linuxbrew/xorg/libx11" => :recommended
