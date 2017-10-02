@@ -11,7 +11,8 @@ class GstreamerVaapi < Formula
   depends_on "gst-plugins-bad"
   depends_on "linuxbrew/xorg/libva" => ["with-eglx"]
   depends_on "linuxbrew/xorg/wayland" => :recommended
-  depends_on "linuxbrew/xorg/libdrm" => :recommended
+  depends_on "linuxbrew/xorg/libdrm"
+  depends_on "systemd"
   depends_on "linuxbrew/xorg/libx11" => :recommended
   
   def caveats
