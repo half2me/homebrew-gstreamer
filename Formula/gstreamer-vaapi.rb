@@ -15,7 +15,7 @@ class GstreamerVaapi < Formula
   depends_on "linuxbrew/xorg/libx11" => :recommended
   
   def caveats
-  "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
+  "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver) If you are using SSH, export DISPLAY=:0 to make it work.\n".undent
   end
   
   option "with-static", "Build static libraries (not recommended)"
