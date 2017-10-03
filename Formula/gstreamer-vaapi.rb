@@ -5,6 +5,11 @@ class GstreamerVaapi < Formula
   sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
   
   head "https://github.com/GStreamer/gstreamer-vaapi.git"
+  
+  bottle do
+    root_url "https://lfto.me/static/bottle/"
+    sha256 "5d754ff6e03094ac40e16e3d097f921d509d67c47c351f72408b0716f0bfeafa" => :x86_64_linux
+  end
 
   depends_on "pkg-config" => :build
   depends_on "gstreamer"
