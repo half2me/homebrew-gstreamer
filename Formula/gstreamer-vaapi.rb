@@ -3,28 +3,31 @@ class GstreamerVaapi < Formula
   homepage "https://github.com/GStreamer/gstreamer-vaapi/"
   url "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.12.3.tar.xz"
   sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
-  
+
   head "https://github.com/GStreamer/gstreamer-vaapi.git"
-  
-  bottle do
-    root_url "https://lfto.me/static/bottle/"
-    sha256 "5d754ff6e03094ac40e16e3d097f921d509d67c47c351f72408b0716f0bfeafa" => :x86_64_linux
-  end
 
   depends_on "pkg-config" => :build
+
   depends_on "gstreamer"
   depends_on "gst-plugins-bad"
-  depends_on "linuxbrew/xorg/libva" => ["with-eglx"]
   depends_on "linuxbrew/xorg/wayland" => :recommended
-  depends_on "linuxbrew/xorg/libdrm"
-  depends_on "systemd" => :build
+  depends_on "linuxbrew/xorg/libdrm" => :recommended
   depends_on "linuxbrew/xorg/libx11" => :recommended
-  
+
   def caveats
   "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
   end
-  
+
   option "with-static", "Build static libraries (not recommended)"
+  option "without-encoders", "Do not build encoders"
+  option "with-eglx", "Add support for EGL and GLX"
+
+  depends_on "systemd" if build.with?("libdrm")
+
+  libva_opts = []
+  libva_opts << "with-eglx" if build.with?("eglx")
+  depends_on "linuxbrew/xorg/libva" => libva_opts
+  depends_on "linuxbrew/xorg/mesa" if build.with?("eglx")
 
   def install
     args = %W[
@@ -36,14 +39,20 @@ class GstreamerVaapi < Formula
       --disable-silent-rules
       --disable-examples
       --enable-static=#{build.with?("static") ? "yes" : "no"}
+      --enable-encoders=#{build.with?("encoders") ? "yes" : "no"}
+      --enable-drm=#{build.with?("libdrm") ? "yes" : "no"}
+      --enable-x11=#{build.with?("libx11") ? "yes" : "no"}
+      --enable-glx=#{build.with?("eglx") ? "yes" : "no"}
+      --enable-egl=#{build.with?("eglx") ? "yes" : "no"}
+      --enable-wayland=#{build.with?("wayland") ? "yes" : "no"}
     ]
-    
+
     if build.head?
       # autogen is invoked in "stable" build because we patch configure.ac
       ENV["NOCONFIGURE"] = "yes"
       system "./autogen.sh"
     end
-    
+
     system "./configure", *args
     system "make"
     system "make", "install"
