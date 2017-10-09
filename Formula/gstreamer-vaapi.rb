@@ -3,6 +3,10 @@ class GstreamerVaapi < Formula
   homepage "https://github.com/GStreamer/gstreamer-vaapi/"
   url "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.12.3.tar.xz"
   sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
+  
+  bottle do
+    sha256 "4bfa50c447d99f6dfe9ed100d3bc59b0a7c88e4032ed40cb208d1d62a67d7840" => :x86_64_linux
+  end
 
   head "https://github.com/GStreamer/gstreamer-vaapi.git"
 
