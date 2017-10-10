@@ -23,7 +23,7 @@ class GstPluginsUgly < Formula
   depends_on "pango" => :recommended
   depends_on "theora" => :recommended
   depends_on "x264" => :recommended
-  depends_on "orc" => recommended
+  depends_on "orc" => :recommended
   
   depends_on "dirac" => :optional
   depends_on "mad" => :optional
