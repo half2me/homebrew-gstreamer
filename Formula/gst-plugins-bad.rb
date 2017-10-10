@@ -17,6 +17,7 @@ class GstPluginsBad < Formula
   depends_on "gst-plugins-base"
   depends_on "openssl"
   depends_on "curl"
+  depends_on "libssh2"
   
   depends_on "jpeg" => :recommended
   depends_on "orc" => :recommended
@@ -24,7 +25,23 @@ class GstPluginsBad < Formula
   depends_on "gnutls" => :recommended
   depends_on "libexif" => :recommended
   depends_on "srtp" => :recommended
+  depends_on "dssim" => :recommended
+  depends_on "libav" => :recommended
+  depends_on "wayland" => :recommended
+  depends_on "aalib" => :recommended
+  depends_on "libva" => :recommended
+  depends_on "libvorbis" => :recommended
+  depends_on "webp" => :recommended
+  depends_on "opencv" => :recommended
+  depends_on "opus" => :recommended
+  depends_on "x264" => :recommended
+  depends_on "x265" => :recommended
   
+  depends_on "qt" => :optional
+  depends_on "openexr" => :optional
+  depends_on "graphene" => :optional
+  depends_on "libbs2b" => :optional
+  depends_on "chromaprint" => :optional
   depends_on "libgsm" => :optional
   depends_on "sdl" => :optional
   depends_on "opus" => :optional
@@ -38,7 +55,6 @@ class GstPluginsBad < Formula
   depends_on "fdk-aac" => :optional
   depends_on "gtk+3" => :optional
   depends_on "libdvdread" => :optional
-  depends_on "opencv" => :optional
   depends_on "schroedinger" => :optional
   depends_on "sound-touch" => :optional
   depends_on "libvo-aacenc" => :optional
@@ -48,6 +64,7 @@ class GstPluginsBad < Formula
       --prefix=#{prefix}
       --disable-debug
       --disable-dependency-tracking
+      --enable-experimental
     ]
 
     if build.head?
