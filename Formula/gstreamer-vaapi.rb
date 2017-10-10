@@ -15,9 +15,9 @@ class GstreamerVaapi < Formula
 
   depends_on "gstreamer"
   depends_on "gst-plugins-bad"
-  depends_on "linuxbrew/xorg/wayland" => :recommended
-  depends_on "linuxbrew/xorg/libdrm" => :recommended
-  depends_on "linuxbrew/xorg/libx11" => :recommended
+  depends_on "wayland" => :recommended
+  depends_on "libdrm" => :recommended
+  depends_on "libx11" => :recommended
 
   def caveats
   "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
@@ -31,8 +31,8 @@ class GstreamerVaapi < Formula
 
   libva_opts = []
   libva_opts << "with-eglx" if build.with?("eglx")
-  depends_on "linuxbrew/xorg/libva" => libva_opts
-  depends_on "linuxbrew/xorg/mesa" if build.with?("eglx")
+  depends_on "libva" => libva_opts
+  depends_on "mesa" if build.with?("eglx")
 
   def install
     args = %W[
