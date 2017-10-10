@@ -23,7 +23,7 @@ class GstPluginsBase < Formula
   depends_on "pango" => :recommended
   depends_on "theora" => :recommended
   depends_on "libvorbis" => :recommended
-  depends_on "gtk+" => :recommende
+  depends_on "gtk+" => :optional
   depends_on "libx11" => :recommended
   depends_on "libxv" if build.with?("libx11")
   depends_on "libxt" if build.with?("libx11")
