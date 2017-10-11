@@ -39,8 +39,9 @@ class GstPluginsBad < Formula
   depends_on "webp" => :recommended
   depends_on "opencv" => :recommended
   depends_on "opus" => :recommended
-  depends_on "x264" => :recommended
   depends_on "x265" => :recommended
+  depends_on "libmpeg2" => :recommended
+  depends_on "openh264" => :recommended
   
   depends_on "nettle" => :optional # use nettle instead of openssl?
   depends_on "libgcrypt" => :optional # use libgcrypt instead of openssl?
@@ -95,7 +96,22 @@ class GstPluginsBad < Formula
 
   test do
     gst = Formula["gstreamer"].opt_bin/"gst-inspect-1.0"
-    output = shell_output("#{gst} --plugin dvbsuboverlay")
-    assert_match version.to_s, output
+    assert_match version.to_s, shell_output("#{gst} --plugin aiff")
+    assert_match version.to_s, shell_output("#{gst} --plugin bz2") # This always gets installed (probably indirect dep)
+    assert_match version.to_s, shell_output("#{gst} --plugin curl") if build.with? "curl"
+    assert_match version.to_s, shell_output("#{gst} --plugin faac") if build.with? "faac"
+    assert_match version.to_s, shell_output("#{gst} --plugin fdkaac") if build.with? "fdk-aac"
+    assert_match version.to_s, shell_output("#{gst} --plugin opencv") if build.with? "opencv"
+    assert_match version.to_s, shell_output("#{gst} --plugin openexr") if build.with? "openexr"
+    assert_match version.to_s, shell_output("#{gst} --plugin opus") if build.with? "opus"
+    assert_match version.to_s, shell_output("#{gst} --plugin rtmp") if build.with? "rtmpdump"
+    assert_match version.to_s, shell_output("#{gst} --plugin webp") if build.with? "webp"
+    assert_match version.to_s, shell_output("#{gst} --plugin x265") if build.with? "x265"
+    assert_match version.to_s, shell_output("#{gst} --plugin chromaprint") if build.with? "chromaprint"
+    assert_match version.to_s, shell_output("#{gst} --plugin faad") if build.with? "faad2"
+    assert_match version.to_s, shell_output("#{gst} --plugin gtk") if build.with? "gtk+3"
+    assert_match version.to_s, shell_output("#{gst} --plugin kate") if build.with? "libkate"
+    assert_match version.to_s, shell_output("#{gst} --plugin mpeg2enc") if build.with? "libmpeg2"
+    assert_match version.to_s, shell_output("#{gst} --plugin openh264") if build.with? "openh264"
   end
 end
