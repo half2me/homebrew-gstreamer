@@ -41,7 +41,7 @@ class GstPluginsBad < Formula
   depends_on "opus" => :recommended
   depends_on "x265" => :recommended
   depends_on "libmpeg2" => :recommended
-  depends_on "openh264" => :recommended
+  # depends_on "openh264" => :recommended # fix openh264 formula first
   
   depends_on "nettle" => :optional # use nettle instead of openssl?
   depends_on "libgcrypt" => :optional # use libgcrypt instead of openssl?
