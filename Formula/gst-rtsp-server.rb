@@ -22,7 +22,6 @@ class GstRtspServer < Formula
 
   test do
     gst = Formula["gstreamer"].opt_bin/"gst-inspect-1.0"
-    output = shell_output("#{gst} --gst-plugin-path #{lib} --plugin rtspclientsink")
-    assert_match /\s#{version.to_s}\s/, output
+    assert_match version.to_s, shell_output("#{gst} --plugin rtsp")
   end
 end
