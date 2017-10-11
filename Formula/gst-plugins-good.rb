@@ -34,7 +34,6 @@ class GstPluginsGood < Formula
   depends_on "wavpack" => :recommended
   depends_on "zlib" => :recommended
   depends_on "bzip2" => :recommended
-  depends_on "libraw" => :recommended
   
   depends_on "jack" => :optional
   depends_on "pulseaudio" => :optional
@@ -43,7 +42,7 @@ class GstPluginsGood < Formula
 
   depends_on "libogg" if build.with? "flac"
 
-  # oss4 and ossaudio seem to get installed... unsure of what their deps are. Also wavewormsink is not installed
+  # oss4 and ossaudio seem to get installed... unsure of what their deps are. Also wavewormsink, 1394 are not installed
   def install
     args = %W[
       --prefix=#{prefix}
@@ -80,7 +79,6 @@ class GstPluginsGood < Formula
     assert_match version.to_s, shell_output("#{gst} --plugin vpx") if build.with?("libvpx")
     assert_match version.to_s, shell_output("#{gst} --plugin wavpack") if build.with?("wavpack")
     assert_match version.to_s, shell_output("#{gst} --plugin ximagesrc") if build.with?("libx11")
-    assert_match version.to_s, shell_output("#{gst} --plugin 1394") if build.with?("libraw")
     assert_match version.to_s, shell_output("#{gst} --plugin jack") if build.with?("jack")
     assert_match version.to_s, shell_output("#{gst} --plugin pulseaudio") if build.with?("pulseaudio")
     assert_match version.to_s, shell_output("#{gst} --plugin shout2") if build.with?("libshout")
