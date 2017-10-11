@@ -1,8 +1,8 @@
 class GstLibav < Formula
   desc "GStreamer plugins for Libav (a fork of FFmpeg)"
   homepage "https://gstreamer.freedesktop.org/"
-  url "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.12.2.tar.xz"
-  sha256 "5bb735b9bb218b652ae4071ea6f6be8eaae55e9d3233aec2f36b882a27542db3"
+  url "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.12.3.tar.xz"
+  sha256 "015ef8cab6f7fb87c8fb42642486423eff3b6e6a6bccdcd6a189f436a3619650"
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-libav.git"
@@ -15,7 +15,7 @@ class GstLibav < Formula
 
   depends_on "pkg-config" => :build
   depends_on "yasm" => :build
-  depends_on "gst-plugins-base"
+  depends_on "half2me/gstreamer/gst-plugins-base"
   depends_on "xz" # For LZMA
 
   def install
