@@ -74,5 +74,7 @@ class GstPluginsBase < Formula
     assert_match version.to_s, shell_output("#{gst} --plugin vorbis") if build.with?("libvorbis")
     assert_match version.to_s, shell_output("#{gst} --plugin ximagesink") if build.with?("libx11")
     assert_match version.to_s, shell_output("#{gst} --plugin xvimagesink") if build.with?("libx11")
+    assert_match version.to_s, shell_output("#{gst} --plugin cdparanoia") if build.with?("cdparanoia")
+    assert_match version.to_s, shell_output("#{gst} --plugin iso-codes") if build.with?("iso-codes")
   end
 end
