@@ -37,7 +37,6 @@ class GstPluginsBad < Formula
   depends_on "aalib" => :recommended
   depends_on "libva" => :recommended
   depends_on "webp" => :recommended
-  depends_on "opencv" => :recommended
   depends_on "opus" => :recommended
   depends_on "x265" => :recommended
   depends_on "libmpeg2" => :recommended
@@ -46,6 +45,7 @@ class GstPluginsBad < Formula
   depends_on "nettle" => :optional # use nettle instead of openssl?
   depends_on "libgcrypt" => :optional # use libgcrypt instead of openssl?
   
+  depends_on "opencv" => :optional
   depends_on "qt" => :optional
   depends_on "openexr" => :optional
   depends_on "graphene" => :optional
