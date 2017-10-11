@@ -1,4 +1,7 @@
 # homebrew-gstreamer
-Aditional elements for gstreamer
+A brew repository for the latest Gstreamer framework and plugins
 
-These formulas are primarily targeting linux platforms. For OSX systems the default homebrew-core formulas should be well maintined.
+Sadly, the core repository contains very outdated, missing, or badly written formulas for gstreamer.
+I've made this repo to have an always up to date repo for installing the latest gstreamer framework, and all of its plugins.
+
+This is for linux systems only. Use with linuxbrew.
