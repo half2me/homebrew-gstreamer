@@ -16,35 +16,40 @@ class GstPluginsGood < Formula
   
   depends_on "half2me/gstreamer/gst-plugins-base"
   depends_on "gettext"
-  depends_on "libsoup"
-
-  depends_on "libx11" => :recommended
-  depends_on "jpeg" => :recommended
+  
   depends_on "orc" => :recommended
-  depends_on "gdk-pixbuf" => :recommended
+  depends_on "libx11" => :recommended
   depends_on "aalib" => :recommended
   depends_on "cairo" => :recommended
   depends_on "flac" => [:recommended, "with-libogg"]
+  depends_on "gdk-pixbuf" => :recommended
+  depends_on "jpeg" => :recommended
+  depends_on "libcaca" => :recommended
+  depends_on "libdv" => :recommended
   depends_on "libpng" => :recommended
+  depends_on "libsoup" => :recommended
+  depends_on "taglib" => :recommended
+  depends_on "libvpx" => :recommended
+  depends_on "wavpack" => :recommended
+  depends_on "zlib" => :recommended
+  depends_on "bzip2" => :recommended
   
-  depends_on "libcaca" => :optional
-  depends_on "libdv" => :optional
+  depends_on "jack" => :optional
+  depends_on "pulseaudio" => :optional
+  depends_on "libdc1394" => :optional
   depends_on "libshout" => :optional
   depends_on "speex" => :optional
-  depends_on "taglib" => :optional
-  depends_on "libvpx" => :optional
-  depends_on "pulseaudio" => :optional
-  depends_on "jack" => :optional
 
   depends_on "libogg" if build.with? "flac"
 
   def install
     args = %W[
       --prefix=#{prefix}
-      --disable-gtk-doc
+      --enable-experimental
       --disable-debug
       --disable-dependency-tracking
-      --disable-silent-rules
+      --enable-v4l2-probe=yes
+      --enable-orc=#{build.with?("orc") ? "yes" : "no"}
     ]
 
     if build.head?
