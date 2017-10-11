@@ -6,17 +6,20 @@ class Gstreamer < Formula
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gstreamer.git"
-
+    
     depends_on "autoconf" => :build
     depends_on "automake" => :build
     depends_on "libtool" => :build
   end
 
   depends_on "pkg-config" => :build
+  
   depends_on "gobject-introspection"
   depends_on "gettext"
   depends_on "glib"
   depends_on "bison"
+  
+  option "with-static", "Build static libraries (not recommended)"
 
   def install
     args = %W[
@@ -25,15 +28,12 @@ class Gstreamer < Formula
       --disable-dependency-tracking
       --disable-gtk-doc
       --enable-introspection=yes
+      --enable-static=#{build.with?("static") ? "yes" : "no"}
     ]
 
     if build.head?
       ENV["NOCONFIGURE"] = "yes"
       system "./autogen.sh"
-
-      # Ban trying to chown to root.
-      # https://bugzilla.gnome.org/show_bug.cgi?id=750367
-      args << "--with-ptp-helper-permissions=none"
     end
 
     # Look for plugins in HOMEBREW_PREFIX/lib/gstreamer-1.0 instead of
