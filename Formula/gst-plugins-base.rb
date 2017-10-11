@@ -36,6 +36,7 @@ class GstPluginsBase < Formula
   depends_on "gtk+" => :optional
   depends_on "qt" => :optional
   
+  # Currently the plugins: ivorbisdec, libvisual cannot be built.
   def install
     args = %W[
       --prefix=#{prefix}
