@@ -36,7 +36,6 @@ class GstPluginsGood < Formula
   
   depends_on "jack" => :optional
   depends_on "pulseaudio" => :optional
-  depends_on "libdc1394" => :optional
   depends_on "libshout" => :optional
   depends_on "speex" => :optional
 
