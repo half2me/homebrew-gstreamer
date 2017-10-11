@@ -59,7 +59,14 @@ class GstPluginsBase < Formula
 
   test do
     gst = Formula["gstreamer"].opt_bin/"gst-inspect-1.0"
-    output = shell_output("#{gst} --plugin volume")
-    assert_match version.to_s, output
+    assert_match version.to_s, shell_output("#{gst} --plugin volume")
+    assert_match version.to_s, shell_output("#{gst} --plugin alsa") if build.with?("alsa-lib")
+    assert_match version.to_s, shell_output("#{gst} --plugin ogg") if build.with?("libogg")
+    assert_match version.to_s, shell_output("#{gst} --plugin opus") if build.with?("opus")
+    assert_match version.to_s, shell_output("#{gst} --plugin pango") if build.with?("pango")
+    assert_match version.to_s, shell_output("#{gst} --plugin theora") if build.with?("theora")
+    assert_match version.to_s, shell_output("#{gst} --plugin vorbis") if build.with?("libvorbis")
+    assert_match version.to_s, shell_output("#{gst} --plugin ximagesink") if build.with?("libx11")
+    assert_match version.to_s, shell_output("#{gst} --plugin xvimagesink") if build.with?("libx11")
   end
 end
