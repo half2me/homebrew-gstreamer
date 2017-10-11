@@ -10,6 +10,6 @@ This is for linux systems only. Use with linuxbrew.
 `brew tap half2me/gstreamer`
 
 # Installing packages
-I've kept the naming scheme used upstream, and in the core repos.
-Install packages the same as you would from core, just use this form: `half2me/gstreamer/<FORMULA>`
-For example to install gstreamer, use: `brew install half2me/gstreamer/gstreamer`
+I've kept the naming scheme used upstream, and in the core repos.  
+Install packages the same as you would from core, just use this form: `half2me/gstreamer/<FORMULA>`  
+For example to install gstreamer, use: `brew install half2me/gstreamer/gstreamer`  
