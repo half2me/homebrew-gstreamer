@@ -3,6 +3,11 @@ class GstLibav < Formula
   homepage "https://gstreamer.freedesktop.org/"
   url "https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.12.3.tar.xz"
   sha256 "015ef8cab6f7fb87c8fb42642486423eff3b6e6a6bccdcd6a189f436a3619650"
+  
+  bottle do
+    root_url "https://lfto.me/static/bottle"
+    sha256 "4282619953db601de1a4c6e598cdbd924b47db939dc3981972f4cd4d65414ca8" => :x86_64_linux
+  end
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-libav.git"
