@@ -5,7 +5,7 @@ class GstPluginsGood < Formula
   sha256 "13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03"
   
   bottle do
-    root_url "https://lfto.me/static/bottle/"
+    root_url "https://lfto.me/static/bottle"
     sha256 "fb0d3f369c9b1f8cbe328ba6cface81d053d57ab9c8a33706ba9afb23a899b10" => :x86_64_linux
   end
   
