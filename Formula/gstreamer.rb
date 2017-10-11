@@ -3,6 +3,11 @@ class Gstreamer < Formula
   homepage "https://gstreamer.freedesktop.org/"
   url "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.12.2.tar.xz"
   sha256 "9fde3f39a2ea984f9e07ce09250285ce91f6e3619d186889f75b5154ecf994ba"
+  
+  bottle do
+    root_url "https://lfto.me/static/bottle/"
+    sha256 "9f6db63f5097672be60cd4b13c11cbfaea429531777ed70397fcf0a72f4f59f1" => :x86_64_linux
+  end
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gstreamer.git"
