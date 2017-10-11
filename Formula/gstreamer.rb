@@ -18,8 +18,6 @@ class Gstreamer < Formula
   depends_on "gettext"
   depends_on "glib"
   depends_on "bison"
-  
-  option "with-static", "Build static libraries (not recommended)"
 
   def install
     args = %W[
@@ -28,7 +26,6 @@ class Gstreamer < Formula
       --disable-dependency-tracking
       --disable-gtk-doc
       --enable-introspection=yes
-      --enable-static=#{build.with?("static") ? "yes" : "no"}
     ]
 
     if build.head?
