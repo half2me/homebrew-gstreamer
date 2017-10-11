@@ -10,34 +10,40 @@ class GstPluginsBad < Formula
     depends_on "autoconf" => :build
     depends_on "automake" => :build
   end
+  
+  option "with-opengl", "Enable OpenGL components and integration" # not supported properly by formula yet.
 
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
   
-  depends_on "gettext"
   depends_on "half2me/gstreamer/gst-plugins-base"
+  depends_on "gettext"
   
-  depends_on "openssl"
-  depends_on "curl"
-  depends_on "libssh2"
-  
-  depends_on "jpeg" => :recommended
   depends_on "orc" => :recommended
+  depends_on "openssl" => :recommended
+  depends_on "libssh2" => :recommended
+  depends_on "libx11" => :recommended
+  depends_on "wayland" => :recommended # requires EGL
+  depends_on "libuvc" => :recommended
+  depends_on "curl" => :recommended
+  depends_on "libvorbis" => :recommended
+  depends_on "jpeg" => :recommended
   depends_on "rtmpdump" => :recommended
   depends_on "gnutls" => :recommended
   depends_on "libexif" => :recommended
   depends_on "srtp" => :recommended
   depends_on "dssim" => :recommended
   depends_on "libav" => :recommended
-  depends_on "wayland" => :recommended
   depends_on "aalib" => :recommended
   depends_on "libva" => :recommended
-  depends_on "libvorbis" => :recommended
   depends_on "webp" => :recommended
   depends_on "opencv" => :recommended
   depends_on "opus" => :recommended
   depends_on "x264" => :recommended
   depends_on "x265" => :recommended
+  
+  depends_on "nettle" => :optional # use nettle instead of openssl?
+  depends_on "libgcrypt" => :optional # use libgcrypt instead of openssl?
   
   depends_on "qt" => :optional
   depends_on "openexr" => :optional
@@ -60,13 +66,20 @@ class GstPluginsBad < Formula
   depends_on "schroedinger" => :optional
   depends_on "sound-touch" => :optional
   depends_on "libvo-aacenc" => :optional
+  depends_on "libbs2b" => :optional
 
   def install
     args = %W[
       --prefix=#{prefix}
+      --enable-experimental
       --disable-debug
       --disable-dependency-tracking
-      --enable-experimental
+      --enable-orc=#{build.with?("orc") ? "yes" : "no"}
+      --enable-opengl=#{build.with?("opengl") ? "yes" : "no"}
+      --enable-gles2=#{build.with?("opengl") ? "yes" : "no"}
+      --enable-egl=#{build.with?("opengl") ? "yes" : "no"}
+      --enable-wgl=#{build.with?("opengl") ? "yes" : "no"}
+      --enable-glx=#{build.with?("opengl") ? "yes" : "no"}
     ]
 
     if build.head?
