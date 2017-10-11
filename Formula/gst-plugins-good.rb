@@ -42,6 +42,7 @@ class GstPluginsGood < Formula
 
   depends_on "libogg" if build.with? "flac"
 
+  # oss4 and ossaudio seem to get installed... unsure of what their deps are.
   def install
     args = %W[
       --prefix=#{prefix}
@@ -64,7 +65,19 @@ class GstPluginsGood < Formula
 
   test do
     gst = Formula["gstreamer"].opt_bin/"gst-inspect-1.0"
-    output = shell_output("#{gst} --plugin cairo")
-    assert_match version.to_s, output
+    assert_match version.to_s, shell_output("#{gst} --plugin rtsp")
+    assert_match version.to_s, shell_output("#{gst} --plugin aasink") if build.with?("aalib")
+    assert_match version.to_s, shell_output("#{gst} --plugin cacasink") if build.with?("libcaca")
+    assert_match version.to_s, shell_output("#{gst} --plugin cairo") if build.with?("cairo")
+    assert_match version.to_s, shell_output("#{gst} --plugin dv") if build.with?("libdv")
+    assert_match version.to_s, shell_output("#{gst} --plugin flac") if build.with?("flac")
+    assert_match version.to_s, shell_output("#{gst} --plugin gdkpixbuf") if build.with?("gdkpixbuf")
+    assert_match version.to_s, shell_output("#{gst} --plugin jpeg") if build.with?("jpeg")
+    assert_match version.to_s, shell_output("#{gst} --plugin png") if build.with?("libpng")
+    assert_match version.to_s, shell_output("#{gst} --plugin souphttpsrc") if build.with?("libsoup")
+    assert_match version.to_s, shell_output("#{gst} --plugin taglib") if build.with?("taglib")
+    assert_match version.to_s, shell_output("#{gst} --plugin vpx") if build.with?("libvpx")
+    assert_match version.to_s, shell_output("#{gst} --plugin wavpack") if build.with?("wavpack")
+    assert_match version.to_s, shell_output("#{gst} --plugin ximagesrc") if build.with?("libx11")
   end
 end
