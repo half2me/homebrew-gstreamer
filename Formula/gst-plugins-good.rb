@@ -74,7 +74,7 @@ class GstPluginsGood < Formula
     assert_match version.to_s, shell_output("#{gst} --plugin gdkpixbuf") if build.with?("gdkpixbuf")
     assert_match version.to_s, shell_output("#{gst} --plugin jpeg") if build.with?("jpeg")
     assert_match version.to_s, shell_output("#{gst} --plugin png") if build.with?("libpng")
-    assert_match version.to_s, shell_output("#{gst} --plugin souphttpsrc") if build.with?("libsoup")
+    assert_match version.to_s, shell_output("#{gst} --plugin soup") if build.with?("libsoup")
     assert_match version.to_s, shell_output("#{gst} --plugin taglib") if build.with?("taglib")
     assert_match version.to_s, shell_output("#{gst} --plugin vpx") if build.with?("libvpx")
     assert_match version.to_s, shell_output("#{gst} --plugin wavpack") if build.with?("wavpack")
