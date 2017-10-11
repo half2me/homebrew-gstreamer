@@ -1,8 +1,8 @@
 class GstPluginsBase < Formula
   desc "GStreamer plugins (well-supported, basic set)"
   homepage "https://gstreamer.freedesktop.org/"
-  url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.2.tar.xz"
-  sha256 "5067dce3afe197a9536fea0107c77213fab536dff4a213b07fc60378d5510675"
+  url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.3.tar.xz"
+  sha256 "d3d37b8489d37fa0018973d850bd2067b98af335fef2fa543ee7d40359e3cea5"
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-plugins-base.git"
@@ -13,8 +13,9 @@ class GstPluginsBase < Formula
   end
 
   depends_on "pkg-config" => :build
+  
   depends_on "gettext"
-  depends_on "gstreamer"
+  depends_on "half2me/gstreamer/gstreamer"
   depends_on "gobject-introspection"
   
   depends_on "orc" => :recommended
@@ -31,7 +32,6 @@ class GstPluginsBase < Formula
   depends_on "cdparanoia" => :optional
 
   def install
-    # gnome-vfs turned off due to lack of formula for it.
     args = %W[
       --prefix=#{prefix}
       --enable-experimental
