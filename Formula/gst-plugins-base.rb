@@ -34,6 +34,7 @@ class GstPluginsBase < Formula
   depends_on "libxv" if build.with?("libx11")
   depends_on "libxt" if build.with?("libx11")
   depends_on "gtk+" => :optional
+  depends_on "qt" => :optional
   
   def install
     args = %W[
