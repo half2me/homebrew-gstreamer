@@ -19,18 +19,22 @@ class GstPluginsBase < Formula
   depends_on "gobject-introspection"
   
   depends_on "orc" => :recommended
+  depends_on "zlib" => :recommended
+  depends_on "libx11" => :recommended
+  depends_on "alsa-lib" => :recommended
+  depends_on "libvorbis" => :recommended
   depends_on "libogg" => :recommended
   depends_on "opus" => :recommended
   depends_on "pango" => :recommended
   depends_on "theora" => :recommended
-  depends_on "libvorbis" => :recommended
-  depends_on "gtk+" => :optional
-  depends_on "libx11" => :recommended
+  
+  depends_on "cdparanoia" => :optional
+  depends_on "iso-codes" => :optional
+  
   depends_on "libxv" if build.with?("libx11")
   depends_on "libxt" if build.with?("libx11")
-  depends_on "alsa-lib" => :recommended
-  depends_on "cdparanoia" => :optional
-
+  depends_on "gtk+" => :optional
+  
   def install
     args = %W[
       --prefix=#{prefix}
@@ -38,6 +42,8 @@ class GstPluginsBase < Formula
       --disable-debug
       --disable-dependency-tracking
       --enable-introspection=yes
+      --enable-orc=#{build.with?("orc") ? "yes" : "no"}
+      --enable-iso-codes=#{build.with?("iso-codes") ? "yes" : "no"}
     ]
 
     if build.head?
