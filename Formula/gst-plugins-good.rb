@@ -24,6 +24,7 @@ class GstPluginsGood < Formula
   depends_on "flac" => [:recommended, "with-libogg"]
   depends_on "gdk-pixbuf" => :recommended
   depends_on "jpeg" => :recommended
+  depends_on "jpeg-turbo" => :recommended
   depends_on "libcaca" => :recommended
   depends_on "libdv" => :recommended
   depends_on "libpng" => :recommended
