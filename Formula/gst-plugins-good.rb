@@ -1,8 +1,8 @@
 class GstPluginsGood < Formula
   desc "GStreamer plugins (well-supported, under the LGPL)"
   homepage "https://gstreamer.freedesktop.org/"
-  url "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.2.tar.xz"
-  sha256 "5591ee7208ab30289a30658a82b76bf87169c927572d9b794f3a41ed48e1ee96"
+  url "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz"
+  sha256 "13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03"
   
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-plugins-good.git"
@@ -12,13 +12,13 @@ class GstPluginsGood < Formula
     depends_on "libtool" => :build
   end
   
-  depends_on "check" => :optional
   depends_on "pkg-config" => :build
+  
+  depends_on "half2me/gstreamer/gst-plugins-base"
   depends_on "gettext"
-  depends_on "gst-plugins-base"
   depends_on "libsoup"
 
-  depends_on :x11 => :recommended
+  depends_on "libx11" => :recommended
   depends_on "jpeg" => :recommended
   depends_on "orc" => :recommended
   depends_on "gdk-pixbuf" => :recommended
