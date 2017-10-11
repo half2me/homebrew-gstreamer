@@ -6,7 +6,8 @@ class Gstreamer < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle/"
-    sha256 "9f6db63f5097672be60cd4b13c11cbfaea429531777ed70397fcf0a72f4f59f1" => :x86_64_linux
+    rebuild 1
+    sha256 "559101c0a7a1f8c2b4d9d5071862fa07e6372e08fe0c13d0ca84f8a7005da639" => :x86_64_linux
   end
 
   head do
