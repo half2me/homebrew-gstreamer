@@ -1,8 +1,8 @@
 class GstPluginsBad < Formula
   desc "GStreamer plugins less supported, not fully tested"
   homepage "https://gstreamer.freedesktop.org/"
-  url "https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.2.tar.xz"
-  sha256 "9c2c7edde4f59d74eb414e0701c55131f562e5c605a3ce9b091754f106c09e37"
+  url "https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.3.tar.xz"
+  sha256 "36d059761852bed0f1a7fcd3ef64a8aeecab95d2bca53cd6aa0f08054b1cbfec"
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git"
@@ -13,8 +13,10 @@ class GstPluginsBad < Formula
 
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
+  
   depends_on "gettext"
-  depends_on "gst-plugins-base"
+  depends_on "half2me/gstreamer/gst-plugins-base"
+  
   depends_on "openssl"
   depends_on "curl"
   depends_on "libssh2"
