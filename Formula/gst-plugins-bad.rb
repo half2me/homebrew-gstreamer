@@ -11,7 +11,7 @@ class GstPluginsBad < Formula
     depends_on "automake" => :build
   end
   
-  option "with-opengl", "Enable OpenGL components and integration" # not supported properly by formula yet.
+  option "with-opengl", "Enable OpenGL (needed for some components (like wayland)" # not supported properly by formula yet.
 
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
@@ -23,7 +23,6 @@ class GstPluginsBad < Formula
   depends_on "openssl" => :recommended
   depends_on "libssh2" => :recommended
   depends_on "libx11" => :recommended
-  depends_on "wayland" => :recommended # requires EGL
   depends_on "libuvc" => :recommended
   depends_on "curl" => :recommended
   depends_on "libvorbis" => :recommended
@@ -45,6 +44,7 @@ class GstPluginsBad < Formula
   depends_on "nettle" => :optional # use nettle instead of openssl?
   depends_on "libgcrypt" => :optional # use libgcrypt instead of openssl?
   
+  depends_on "wayland" => :optional # requires EGL
   depends_on "opencv" => :optional
   depends_on "qt" => :optional
   depends_on "openexr" => :optional
