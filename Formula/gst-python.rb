@@ -5,7 +5,7 @@ class GstPython < Formula
   sha256 "c3f529dec1294633132690806703b80bad5752eff482eaf81f209c2aba012ba7"
 
   depends_on :python3
-  depends_on "pygobject3"
+  depends_on "pygobject3" => ['with--python3']
   depends_on "half2me/gstreamer/gst-plugins-base"
 
   link_overwrite "lib/python3.6/site-packages/gi/overrides"
