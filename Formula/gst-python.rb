@@ -4,10 +4,6 @@ class GstPython < Formula
   url "https://gstreamer.freedesktop.org/src/gst-python/gst-python-1.12.3.tar.xz"
   sha256 "c3f529dec1294633132690806703b80bad5752eff482eaf81f209c2aba012ba7"
 
-  bottle do
-    sha256 "f497d60fe94b0a1c23b446aa6a1e3ef512efd610045964c4f9d773194d7139eb" => :x86_64_linux
-  end
-
   option "without-python", "Build without python 2 support"
 
   depends_on :python3 => :optional
