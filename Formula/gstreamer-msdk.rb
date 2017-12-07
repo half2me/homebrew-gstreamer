@@ -35,7 +35,7 @@ class GstreamerMsdk < Formula
     
     # Then we patch source files to look for mfx headers like this: "mfx/*.h"
     
-    file_names = Dir["gst-libs/mfx/*"]
+    file_names = Dir["gst-libs/mfx/*.h"]
     file_names.each do |file_name|
       text = File.read(file_name)
       new_contents = text.gsub("#include <mfxvideo.h>", "#include <mfx/mfxvideo.h>")
