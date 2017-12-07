@@ -38,7 +38,8 @@ class GstreamerMsdk < Formula
     file_names = Dir["gst-libs/mfx/*.h"]
     file_names.each do |file_name|
       text = File.read(file_name)
-      new_contents = text.gsub("#include <mfxvideo.h>", "#include <mfx/mfxvideo.h>")
+      new1 = text.gsub("#include <mfxvideo.h>", "#include <mfx/mfxjpeg.h>")
+      new_contents = new1.gsub("#include <mfxvideo.h>", "#include <mfx/mfxvideo.h>")
       File.open(file_name, "w") {|file| file.puts new_contents }
     end
     
