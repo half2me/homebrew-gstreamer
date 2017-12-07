@@ -12,6 +12,7 @@ class GstreamerMsdk < Formula
   end
 
   depends_on "meson" => :build
+  depends_on "ninja" => :build
 
   depends_on "half2me/gstreamer/gst-plugins-base"
   depends_on "half2me/gstreamer/mfx-dispatch"
