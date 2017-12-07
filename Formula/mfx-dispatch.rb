@@ -14,8 +14,7 @@ class MfxDispatch < Formula
 
   def install
     system "autoreconf", "-i"
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
+    system "./configure", "--disable-dependency-tracking",
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"
     system "make", "install"
