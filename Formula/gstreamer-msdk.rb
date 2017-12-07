@@ -16,7 +16,7 @@ class GstreamerMsdk < Formula
   depends_on "libva" => :recommended
   depends_on "mesa" => :recommended
   depends_on "wayland" => :recommended
-  depends_on "x11" => :recommended
+  depends_on "libx11" => :recommended
 
   def install
     args = %W[
