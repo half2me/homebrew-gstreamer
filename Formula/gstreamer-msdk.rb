@@ -33,6 +33,15 @@ class GstreamerMsdk < Formula
     new_contents = text.gsub("dependency('mfx'", "dependency('libmfx'")
     File.open(file_name, "w") {|file| file.puts new_contents }
     
+    # Then we patch source files to look for mfx headers like this: "mfx/*.h"
+    
+    file_names = Dir["/gst-libs/mfx/*"]
+    file_names.each do |file_name|
+      text = File.read(file_name)
+      new_contents = text.gsub("#include <mfxvideo.h>", "#include <mfx/mfxvideo.h>")
+      File.open(file_name, "w") {|file| file.puts new_contents }
+    end
+    
     system "meson", "build", *args
     system "ninja", "-C", "build", "install"
   end
