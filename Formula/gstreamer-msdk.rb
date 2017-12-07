@@ -12,6 +12,7 @@ class GstreamerMsdk < Formula
   depends_on "linuxbrew/xorg/libdrm"
   depends_on "linuxbrew/xorg/libva-intel-driver"
   depends_on "systemd"
+  depends_on "libxkbcommon"
   
   depends_on "linuxbrew/xorg/mesa" => :recommended
   depends_on "linuxbrew/xorg/wayland" => :recommended
