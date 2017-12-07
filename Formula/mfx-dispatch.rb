@@ -12,6 +12,7 @@ class MfxDispatch < Formula
   depends_on "automake" => :build
 
   def install
+    system "autoreconf", "-i"
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
