@@ -32,6 +32,12 @@ class GstreamerMsdk < Formula
       --libdir=#{prefix}/lib/gstreamer-1.0
     ]
 
+    # We patch the meson build file to search for "libmfx" instead of "mfx"
+    file_name = "meson.build"
+    text = File.read(file_name)
+    new_contents = text.gsub("dependency('mfx'", "dependency('libmfx'")
+    File.open(file_name, "w") {|file| file.puts new_contents }
+    
     system "meson", "build", *args
     system "ninja"
     system "ninja", "install"
