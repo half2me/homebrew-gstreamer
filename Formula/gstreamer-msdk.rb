@@ -34,8 +34,7 @@ class GstreamerMsdk < Formula
     File.open(file_name, "w") {|file| file.puts new_contents }
     
     system "meson", "build", *args
-    system "ninja"
-    system "ninja", "install"
+    system "ninja", "-C", "build", "install"
   end
 
   test do
