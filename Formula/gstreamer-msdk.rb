@@ -8,7 +8,7 @@ class GstreamerMsdk < Formula
 
   depends_on "meson" => :build
 
-  depends_on "half2me/gstreamer/gst-plugins-bad"
+  depends_on "half2me/gstreamer/gst-plugins-base"
   depends_on "linuxbrew/xorg/libdrm"
   depends_on "linuxbrew/xorg/libva-intel-driver"
   depends_on "systemd"
