@@ -5,11 +5,6 @@ class GstreamerMsdk < Formula
   sha256 "defdf8d943c77a2d7dd8a13748a8437c9d8cbc63fe132cd4fe90e01dae50b091"
 
   head "https://github.com/ishmael1985/gstreamer-media-SDK.git"
-  
-  bottle do
-    root_url "https://lfto.me/static/bottle"
-    sha256 "c78743fbfe8a8b0a3c39e9469bbc4f8dffe728bb6e8067b7b6fdc32c8c117774" => :x86_64_linux
-  end
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
