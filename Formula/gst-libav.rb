@@ -6,7 +6,6 @@ class GstLibav < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "4282619953db601de1a4c6e598cdbd924b47db939dc3981972f4cd4d65414ca8" => :x86_64_linux
   end
 
   head do
