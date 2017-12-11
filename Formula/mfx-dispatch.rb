@@ -34,6 +34,12 @@ class MfxDispatch < Formula
       --with-libva_x11=#{build.with?("libx11") ? "yes" : "no"}
     ]
     
+    # patch /include folder to not use "mfx" subfolder
+    file_name = "libmfx.pc.in"
+    text = File.read(file_name)
+    new_contents = text.gsub("includedir=@includedir@", "includedir=@includedir@/mfx")
+    File.open(file_name, "w") {|file| file.puts new_contents }
+    
     system "autoreconf", "-i"
     system "./configure", *args
     system "make", "install"
