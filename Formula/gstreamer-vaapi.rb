@@ -1,12 +1,11 @@
 class GstreamerVaapi < Formula
   desc "Hardware-accelerated video decoding, encoding and processing on Intel graphics through VA-API"
   homepage "https://github.com/GStreamer/gstreamer-vaapi/"
-  url "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.12.3.tar.xz"
-  sha256 "f4cdafd8fd9606a490917c8b67336e835df1219580d55421c70480fd0913744d"
+  url "https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-1.12.4.tar.xz"
+  sha256 "1c2d77242e1f30c4d1394636cae9f6877228a017960fca96881e0080d8b6e9c9"
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "4bfa50c447d99f6dfe9ed100d3bc59b0a7c88e4032ed40cb208d1d62a67d7840" => :x86_64_linux
   end
 
   head "https://github.com/GStreamer/gstreamer-vaapi.git"
