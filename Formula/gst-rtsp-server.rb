@@ -1,11 +1,12 @@
 class GstRtspServer < Formula
   desc "RTSP server library based on GStreamer"
   homepage "https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
-  url "https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.12.4.tar.xz"
-  sha256 "7660112ebd59838f1054796b38109dcbe32f0a040e3a252a68a81055aeaa56a9"
+  url "https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.12.3.tar.xz"
+  sha256 "67255971bb16029a01de66b9f9687f20d8dbf3d3bd75feb48605d0723a7c74ec"
   
   bottle do
     root_url "https://lfto.me/static/bottle"
+    sha256 "866520d92e62af8afe6d525a5112d71a2fc47c5c75203aac20cbad4ac123b214" => :x86_64_linux
   end
   
   depends_on "half2me/gstreamer/gst-plugins-base"
