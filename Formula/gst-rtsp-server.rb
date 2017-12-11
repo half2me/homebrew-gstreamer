@@ -6,7 +6,6 @@ class GstRtspServer < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "866520d92e62af8afe6d525a5112d71a2fc47c5c75203aac20cbad4ac123b214" => :x86_64_linux
   end
   
   depends_on "half2me/gstreamer/gst-plugins-base"
