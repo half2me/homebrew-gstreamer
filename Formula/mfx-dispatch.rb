@@ -10,7 +10,6 @@ class MfxDispatch < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "c78743fbfe8a8b0a3c39e9469bbc4f8dffe728bb6e8067b7b6fdc32c8c117774" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
