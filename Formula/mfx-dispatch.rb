@@ -16,12 +16,25 @@ class MfxDispatch < Formula
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
+  
+  depends_on "linuxbrew/xorg/libdrm" => :recomended
+  depends_on "linuxbrew/xorg/libx11" => :recommended
 
   def install
+    args = %W[
+      --prefix=#{prefix}
+      --sysconfdir=#{etc}
+      --localstatedir=#{var}
+      --disable-dependency-tracking
+      --disable-debug
+      --disable-silent-rules
+      --disable-examples
+      --with-libva_drm=#{build.with?("libdrm") ? "yes" : "no"}
+      --with-libva_x11=#{build.with?("libx11") ? "yes" : "no"}
+    ]
+    
     system "autoreconf", "-i"
-    system "./configure", "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
+    system "./configure", *args
     system "make", "install"
   end
 
