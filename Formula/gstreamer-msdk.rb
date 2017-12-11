@@ -16,9 +16,9 @@ class GstreamerMsdk < Formula
   depends_on "systemd"
   depends_on "libxkbcommon"
   
-  depends_on "linuxbrew/xorg/mesa" => :recommended
-  depends_on "linuxbrew/xorg/wayland" => :recommended
-  depends_on "linuxbrew/xorg/libx11" => :recommended
+  depends_on "linuxbrew/xorg/mesa" => :optional
+  depends_on "linuxbrew/xorg/wayland" => :optional
+  depends_on "linuxbrew/xorg/libx11" => :optional
 
   def install
     args = %W[
@@ -32,16 +32,6 @@ class GstreamerMsdk < Formula
     text = File.read(file_name)
     new_contents = text.gsub("dependency('mfx'", "dependency('libmfx'")
     File.open(file_name, "w") {|file| file.puts new_contents }
-    
-    # Then we patch source files to look for mfx headers like this: "mfx/*.h"
-    
-    file_names = Dir["gst-libs/mfx/*.h"]
-    file_names.each do |file_name|
-      text = File.read(file_name)
-      new1 = text.gsub("#include <mfxvideo.h>", "#include <mfx/mfxjpeg.h>")
-      new_contents = new1.gsub("#include <mfxvideo.h>", "#include <mfx/mfxvideo.h>")
-      File.open(file_name, "w") {|file| file.puts new_contents }
-    end
     
     system "meson", "build", *args
     system "ninja", "-C", "build", "install"
