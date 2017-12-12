@@ -6,7 +6,6 @@ class GstPluginsGood < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "fb0d3f369c9b1f8cbe328ba6cface81d053d57ab9c8a33706ba9afb23a899b10" => :x86_64_linux
   end
   
   head do
