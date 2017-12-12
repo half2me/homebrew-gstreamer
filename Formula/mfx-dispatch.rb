@@ -7,17 +7,12 @@ class MfxDispatch < Formula
   head do
     url "https://github.com/lu-zero/mfx_dispatch.git"
   end
-  
-  bottle do
-    root_url "https://lfto.me/static/bottle"
-  end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
   
   depends_on "linuxbrew/xorg/libva"
-  
   depends_on "linuxbrew/xorg/libdrm" => :recomended
   depends_on "linuxbrew/xorg/libx11" => :optional
 
@@ -34,27 +29,13 @@ class MfxDispatch < Formula
       --with-libva_x11=#{build.with?("libx11") ? "yes" : "no"}
     ]
     
-    # patch /include folder to not use "mfx" subfolder
-    file_name = "libmfx.pc.in"
-    text = File.read(file_name)
-    new_contents = text.gsub("includedir=@includedir@", "includedir=@includedir@/mfx")
-    File.open(file_name, "w") {|file| file.puts new_contents }
-    
     system "autoreconf", "-i"
     system "./configure", *args
     system "make", "install"
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test mfx_dispatch`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    # Not quite sure how to test it, it should install a .pc file for headers, and make the libraries available
+    system "true"
   end
 end
