@@ -14,7 +14,7 @@ class GstPluginsUgly < Formula
 
   depends_on "pkg-config" => :build
   depends_on "gettext"
-  depends_on "gst-plugins-base"
+  depends_on "half2me/gstreamer/gst-plugins-base"
 
   depends_on "jpeg" => :recommended
   depends_on "libvorbis" => :recommended
