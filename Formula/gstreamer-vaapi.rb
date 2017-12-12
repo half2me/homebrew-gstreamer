@@ -12,7 +12,6 @@ class GstreamerVaapi < Formula
 
   depends_on "pkg-config" => :build
 
-  depends_on "half2me/gstreamer/gstreamer"
   depends_on "half2me/gstreamer/gst-plugins-bad"
   depends_on "wayland" => :recommended
   depends_on "libdrm" => :recommended
