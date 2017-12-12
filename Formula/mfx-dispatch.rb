@@ -10,18 +10,38 @@ class MfxDispatch < Formula
   
   bottle do
     root_url "https://lfto.me/static/bottle"
-    sha256 "c78743fbfe8a8b0a3c39e9469bbc4f8dffe728bb6e8067b7b6fdc32c8c117774" => :x86_64_linux
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
+  
+  depends_on "linuxbrew/xorg/libva"
+  
+  depends_on "linuxbrew/xorg/libdrm" => :recomended
+  depends_on "linuxbrew/xorg/libx11" => :optional
 
   def install
+    args = %W[
+      --prefix=#{prefix}
+      --sysconfdir=#{etc}
+      --localstatedir=#{var}
+      --disable-dependency-tracking
+      --disable-debug
+      --disable-silent-rules
+      --disable-examples
+      --with-libva_drm=#{build.with?("libdrm") ? "yes" : "no"}
+      --with-libva_x11=#{build.with?("libx11") ? "yes" : "no"}
+    ]
+    
+    # patch /include folder to not use "mfx" subfolder
+    file_name = "libmfx.pc.in"
+    text = File.read(file_name)
+    new_contents = text.gsub("includedir=@includedir@", "includedir=@includedir@/mfx")
+    File.open(file_name, "w") {|file| file.puts new_contents }
+    
     system "autoreconf", "-i"
-    system "./configure", "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
+    system "./configure", *args
     system "make", "install"
   end
 
