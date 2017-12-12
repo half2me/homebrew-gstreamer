@@ -19,7 +19,7 @@ class GstPluginsBase < Formula
   depends_on "pkg-config" => :build
   
   depends_on "gettext"
-  depends_on "half2me/gstreamer/gstreamer"
+  depends_on "gstreamer"
   depends_on "gobject-introspection"
   
   depends_on "orc" => :recommended
