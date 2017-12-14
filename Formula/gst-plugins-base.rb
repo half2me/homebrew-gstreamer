@@ -3,9 +3,12 @@ class GstPluginsBase < Formula
   homepage "https://gstreamer.freedesktop.org/"
   url "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.12.4.tar.xz"
   sha256 "4c306b03df0212f1b8903784e29bb3493319ba19ebebf13b0c56a17870292282"
-  
+
   bottle do
-    root_url "https://lfto.me/static/bottle"
+    sha256 "9f65b1fc26269b84233f153f67d586b03f8975a59f762ad37c4848407deb74ed" => :high_sierra
+    sha256 "66af7b852e6f1035719005bdb5d36eddcd525bb34a96ca50303dd9d741fcfc89" => :sierra
+    sha256 "0efc68a23f92a5ef48a19eb20e0590c3c328c9da53bdf00740fa82fd43565d8e" => :el_capitan
+    sha256 "9cdf1baa36662d29173acc4f4af1b382e146f52f37693ff40e50a7f076e72400" => :x86_64_linux
   end
 
   head do
@@ -17,39 +20,35 @@ class GstPluginsBase < Formula
   end
 
   depends_on "pkg-config" => :build
-  
   depends_on "gettext"
   depends_on "gstreamer"
+
+  # The set of optional dependencies is based on the intersection of
+  # https://cgit.freedesktop.org/gstreamer/gst-plugins-base/tree/REQUIREMENTS
+  # and Homebrew formulae
   depends_on "gobject-introspection"
-  
   depends_on "orc" => :recommended
-  depends_on "zlib" => :recommended
-  depends_on "libx11" => :recommended
-  depends_on "alsa-lib" => :recommended
-  depends_on "libvorbis" => :recommended
-  depends_on "libogg" => :recommended
-  depends_on "opus" => :recommended
-  depends_on "pango" => :recommended
-  depends_on "theora" => :recommended
-  
-  depends_on "cdparanoia" => :optional
-  depends_on "iso-codes" => :optional
-  
-  depends_on "libxv" if build.with?("libx11")
-  depends_on "libxt" if build.with?("libx11")
-  depends_on "gtk+" => :optional
-  depends_on "qt" => :optional
-  
-  # Currently the plugins: ivorbisdec, libvisual cannot be built.
+  depends_on "libogg" => :optional
+  depends_on "opus" => :optional
+  depends_on "pango" => :optional
+  depends_on "theora" => :optional
+  depends_on "libvorbis" => :optional
+
   def install
+    # gnome-vfs turned off due to lack of formula for it.
     args = %W[
       --prefix=#{prefix}
       --enable-experimental
+      --disable-libvisual
+      --disable-alsa
+      --disable-cdparanoia
+      --without-x
+      --disable-x
+      --disable-xvideo
+      --disable-xshm
       --disable-debug
       --disable-dependency-tracking
       --enable-introspection=yes
-      --enable-orc=#{build.with?("orc") ? "yes" : "no"}
-      --enable-iso-codes=#{build.with?("iso-codes") ? "yes" : "no"}
     ]
 
     if build.head?
@@ -64,16 +63,7 @@ class GstPluginsBase < Formula
 
   test do
     gst = Formula["gstreamer"].opt_bin/"gst-inspect-1.0"
-    assert_match version.to_s, shell_output("#{gst} --plugin volume")
-    assert_match version.to_s, shell_output("#{gst} --plugin alsa") if build.with?("alsa-lib")
-    assert_match version.to_s, shell_output("#{gst} --plugin ogg") if build.with?("libogg")
-    assert_match version.to_s, shell_output("#{gst} --plugin opus") if build.with?("opus")
-    assert_match version.to_s, shell_output("#{gst} --plugin pango") if build.with?("pango")
-    assert_match version.to_s, shell_output("#{gst} --plugin theora") if build.with?("theora")
-    assert_match version.to_s, shell_output("#{gst} --plugin vorbis") if build.with?("libvorbis")
-    assert_match version.to_s, shell_output("#{gst} --plugin ximagesink") if build.with?("libx11")
-    assert_match version.to_s, shell_output("#{gst} --plugin xvimagesink") if build.with?("libx11")
-    assert_match version.to_s, shell_output("#{gst} --plugin cdparanoia") if build.with?("cdparanoia")
-    assert_match version.to_s, shell_output("#{gst} --plugin iso-codes") if build.with?("iso-codes")
+    output = shell_output("#{gst} --plugin volume")
+    assert_match version.to_s, output
   end
 end
