@@ -3,6 +3,11 @@ class GstPluginsBad < Formula
   homepage "https://gstreamer.freedesktop.org/"
   url "https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.12.4.tar.xz"
   sha256 "0c7857be16686d5c1ba6e34bd338664d3d4599d32714a8eca5c8a41a101e2d08"
+  
+  bottle do
+    root_url "https://lfto.me/static/bottle"
+    sha256 "118984fe772091eaa81f2835f44ae0eacbb935a5011643222d21b5066f74d24e" => :x86_64_linux
+  end
 
   head do
     url "https://anongit.freedesktop.org/git/gstreamer/gst-plugins-bad.git"
