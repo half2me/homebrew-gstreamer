@@ -31,7 +31,7 @@ class GstPluginsBad < Formula
   depends_on "libuvc" => :recommended
   depends_on "curl" => :recommended
   depends_on "libvorbis" => :recommended
-  depends_on "jpeg" => :recommended
+  depends_on "jpeg-turbo" => :recommended
   depends_on "rtmpdump" => :recommended
   depends_on "gnutls" => :recommended
   depends_on "libexif" => :recommended
