@@ -18,7 +18,7 @@ class GstPluginsUgly < Formula
 
   depends_on "jpeg-turbo" => :recommended
   depends_on "libvorbis" => :recommended
-  depends_on "aalib" => :recommended
+  depends_on "aalib" => :optional # doesn't work as of 12.4
   depends_on "liboil" => :recommended
   depends_on "pango" => :recommended
   depends_on "theora" => :recommended
