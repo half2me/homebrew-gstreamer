@@ -29,6 +29,14 @@ class MfxDispatch < Formula
       --with-libva_x11=#{build.with?("libx11") ? "yes" : "no"}
     ]
     
+    # Patch to change mfx/ prefix from all includes
+    # This will make the headers install to include/ instead of include/mfx/
+    file_name = "Makefile.am"
+    text = File.read(file_name)
+    new_contents = text.gsub("pkgincludedir = $(includedir)/mfx", "pkgincludedir = $(includedir)")
+    File.open(file_name, "w") {|file| file.puts new_contents }
+    
+    
     system "autoreconf", "-i"
     system "./configure", *args
     system "make", "install"
