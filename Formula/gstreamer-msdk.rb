@@ -24,7 +24,7 @@ class GstreamerMsdk < Formula
     args = %W[
       --prefix=#{prefix}
       --buildtype=release
-      --libdir=#{prefix}/lib/gstreamer-1.0
+      --libdir=#{prefix}/lib
     ]
 
     # We patch the meson build file to search for "libmfx" instead of "mfx"
