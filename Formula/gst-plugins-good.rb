@@ -23,13 +23,13 @@ class GstPluginsGood < Formula
   
   depends_on "orc" => :recommended
   depends_on "libx11" => :recommended
-  depends_on "aalib" => :recommended
-  depends_on "cairo" => :recommended
+  depends_on "aalib" => :optional # doesn't work as of 12.4
+  depends_on "cairo" => :optional # doesn't work as of 12.4
   depends_on "flac" => [:recommended, "with-libogg"]
   depends_on "gdk-pixbuf" => :recommended
   depends_on "jpeg-turbo" => :recommended
-  depends_on "libcaca" => :recommended
-  depends_on "libdv" => :recommended
+  depends_on "libcaca" => :optional # doesn't work as of 12.4
+  depends_on "libdv" => :optional # doesn't work as of 12.4
   depends_on "libpng" => :recommended
   depends_on "libsoup" => :recommended
   depends_on "taglib" => :recommended
