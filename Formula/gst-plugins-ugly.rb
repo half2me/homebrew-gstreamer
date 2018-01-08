@@ -16,7 +16,7 @@ class GstPluginsUgly < Formula
   depends_on "gettext"
   depends_on "half2me/gstreamer/gst-plugins-base"
 
-  depends_on "jpeg" => :recommended
+  depends_on "jpeg-turbo" => :recommended
   depends_on "libvorbis" => :recommended
   depends_on "aalib" => :recommended
   depends_on "liboil" => :recommended
