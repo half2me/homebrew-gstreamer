@@ -9,7 +9,7 @@ class GstreamerMsdk < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   
-  depends_on "libva2"
+  depends_on "half2me/gstreamer/libva2"
 
   depends_on "half2me/gstreamer/gst-plugins-bad"
   depends_on "half2me/gstreamer/mfx-dispatch"
