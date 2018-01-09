@@ -12,7 +12,7 @@ class MfxDispatch < Formula
   depends_on "automake" => :build
   depends_on "libtool" => :build
   
-  depends_on "linuxbrew/xorg/libva"
+  depends_on "linuxbrew/xorg/libva2"
   depends_on "linuxbrew/xorg/libdrm" => :recomended
   depends_on "linuxbrew/xorg/libx11" => :optional
 
