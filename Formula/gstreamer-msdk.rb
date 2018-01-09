@@ -13,8 +13,7 @@ class GstreamerMsdk < Formula
 
   depends_on "half2me/gstreamer/gst-plugins-bad"
   depends_on "half2me/gstreamer/mfx-dispatch"
-  depends_on "linuxbrew/xorg/libdrm"
-  depends_on "linuxbrew/xorg/libva-intel-driver"
+  depends_on "half2me/gstreamer/libdrm"
   depends_on "systemd"
   depends_on "libxkbcommon"
   
