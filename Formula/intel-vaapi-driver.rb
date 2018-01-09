@@ -4,6 +4,8 @@ class IntelVaapiDriver < Formula
   url "https://github.com/01org/intel-vaapi-driver/releases/download/2.0.0/intel-vaapi-driver-2.0.0.tar.bz2"
   sha256 "10f6b0a91f34715d8d4d9a9e0fb3cc0afe5fcf85355db1272bd5fff31522f469"
   
+  depends_on "half2me/gstreamer/libva2"
+  
   head do
     url "https://github.com/01org/intel-vaapi-driver.git"
   end
