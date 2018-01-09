@@ -23,7 +23,7 @@ class GstreamerVaapi < Formula
 
   depends_on "systemd" if build.with?("libdrm")
 
-  depends_on "half2me/gstreamer/libva2"
+  depends_on "libva"
 
   def install
     args = %W[
