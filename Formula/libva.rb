@@ -7,6 +7,8 @@ class Libva < Formula
   head do
     url "https://github.com/01org/libva.git"
   end
+  
+  depends_on "libdrm"
 
   def install
     system "./configure", "--disable-debug",
