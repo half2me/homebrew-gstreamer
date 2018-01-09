@@ -22,16 +22,9 @@ class GstreamerVaapi < Formula
   "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
   end
 
-  option "with-static", "Build static libraries (not recommended)"
-  option "without-encoders", "Do not build encoders"
-  option "with-eglx", "Add support for EGL and GLX"
-
   depends_on "systemd" if build.with?("libdrm")
 
-  libva_opts = []
-  libva_opts << "with-eglx" if build.with?("eglx")
-  depends_on "libva" => libva_opts
-  depends_on "mesa" if build.with?("eglx")
+  depends_on "half2me/gstreamer/libva2"
 
   def install
     args = %W[
