@@ -38,7 +38,7 @@ class GstPluginsBad < Formula
   depends_on "dssim" => :recommended
   depends_on "libav" => :recommended
   depends_on "aalib" => :recommended
-  #depends_on "half2me/gstreamer/libva2" => :recommended
+  depends_on "half2me/gstreamer/libva2" => :recommended
   depends_on "webp" => :recommended
   depends_on "opus" => :recommended
   depends_on "x265" => :recommended
