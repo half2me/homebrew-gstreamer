@@ -8,7 +8,7 @@ class Libva2 < Formula
     url "https://github.com/01org/libva.git"
   end
   
-  depends_on "libdrm"
+  depends_on "half2me/gstreamer/libdrm"
   
   depends_on "pkg-config" => :build
   
