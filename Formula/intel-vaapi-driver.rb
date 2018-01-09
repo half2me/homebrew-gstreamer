@@ -19,6 +19,9 @@ class IntelVaapiDriver < Formula
                           "--disable-silent-rules",
                           "--prefix=#{prefix}"
     system "make", "install"
+    
+    ohai "Intel VA-API driver has been installed"
+    prefix.install "README" => "intel-vaapi-driver.md"
   end
 
   test do
