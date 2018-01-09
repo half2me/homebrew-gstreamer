@@ -15,7 +15,7 @@ class GstreamerVaapi < Formula
 
   depends_on "half2me/gstreamer/gst-plugins-bad"
   depends_on "wayland" => :recommended
-  depends_on "libdrm" => :recommended
+  depends_on "half2me/gstreamer/libdrm" => :recommended
   depends_on "libx11" => :recommended
 
   def caveats
