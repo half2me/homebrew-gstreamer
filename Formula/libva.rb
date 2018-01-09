@@ -9,6 +9,11 @@ class Libva < Formula
   end
   
   depends_on "libdrm"
+  
+  depends_on "pkg-config" => :build
+  
+  depends_on "wayland" => :recommended
+  depends_on "libx11" => :recommended
 
   def install
     system "./configure", "--disable-debug",
