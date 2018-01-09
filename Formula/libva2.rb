@@ -1,4 +1,4 @@
-class Libva < Formula
+class Libva2 < Formula
   desc "Libva is an implementation for VA-API (VIdeo Acceleration API)"
   homepage "https://01.org/linuxmedia"
   url "https://github.com/01org/libva/releases/download/2.0.0/libva-2.0.0.tar.bz2"
