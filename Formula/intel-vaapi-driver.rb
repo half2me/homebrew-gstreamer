@@ -9,6 +9,9 @@ class IntelVaapiDriver < Formula
   head do
     url "https://github.com/01org/intel-vaapi-driver.git"
   end
+  
+  depends_on "pkg-config" => :build
+  depends_on "linuxbrew/xorg/wayland" => :recommended
 
   def install
     system "./configure", "--disable-debug",
