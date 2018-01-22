@@ -13,9 +13,9 @@ class GstreamerVaapi < Formula
   depends_on "pkg-config" => :build
 
   depends_on "half2me/gstreamer/gst-plugins-bad"
-  depends_on "wayland" => :recommended
-  depends_on "libdrm" => :recommended
-  depends_on "libx11" => :recommended
+  depends_on "linuxbrew/xorg/wayland" => :recommended
+  depends_on "linuxbrew/xorg/libdrm" => :recommended
+  depends_on "linuxbrew/xorg/libx11" => :recommended
 
   def caveats
   "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
