@@ -18,7 +18,9 @@ class GstreamerVaapi < Formula
   depends_on "linuxbrew/xorg/libx11" => :recommended
 
   def caveats
-  "You must install a libva driver for this package to work. (e.g.: brew install libva-intel-driver)\n".undent
+    <<~EOS
+      You must install a libva driver for this package to work. (e.g.: `brew install libva-intel-driver`)
+    EOS
   end
 
   depends_on "systemd" if build.with?("libdrm")
