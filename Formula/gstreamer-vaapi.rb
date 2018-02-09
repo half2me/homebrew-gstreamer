@@ -23,9 +23,9 @@ class GstreamerVaapi < Formula
     EOS
   end
 
-  depends_on "systemd" if build.with?("libdrm")
+  depends_on "linuxbrew/xorg/systemd" if build.with?("libdrm")
 
-  depends_on "libva"
+  depends_on "linuxbrew/xorg/libva"
 
   def install
     args = %W[
